@@ -1,11 +1,7 @@
--- 1. Total number of bookings made by each user
-SELECT user_id, COUNT(*) AS total_bookings
-FROM bookings
-GROUP BY user_id;
-
--- 2. Rank properties based on the number of bookings using ROW_NUMBER()
+-- Compare ROW_NUMBER and RANK side by side
 SELECT property_id,
        COUNT(*) AS booking_count,
-       ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS row_num
+       ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS row_number,
+       RANK() OVER (ORDER BY COUNT(*) DESC) AS rank
 FROM bookings
 GROUP BY property_id;
