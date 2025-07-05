@@ -16,7 +16,7 @@ SELECT properties.id AS property_id,
        reviews.comment
 FROM properties
 LEFT JOIN reviews ON properties.id = reviews.property_id;
-
+ORDER BY properties.id;
 -- 3. FULL OUTER JOIN: Get all users and bookings, including unmatched users and bookings
 SELECT users.id AS user_id,
        users.name AS user_name,
